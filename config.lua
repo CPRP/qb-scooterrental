@@ -8,4 +8,4 @@ Config.ScooterModel = "scooter"
 Config.ScooterPrice = 150
 
 
-Config.FuelSystem = "lj-fuel"
+Config.FuelSystem = "LegacyFuel"
