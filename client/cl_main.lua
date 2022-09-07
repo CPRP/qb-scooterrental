@@ -37,7 +37,7 @@ CreateThread(function()
 
 CreateThread(function()
 	local scooterblip = AddBlipForCoord(Config.PedLocation)
-	SetBlipAsShortRange(blip, true)
+	SetBlipAsShortRange(scooterblip, true)
 	SetBlipSprite(scooterblip, 348)
 	SetBlipColour(scooterblip, 60)
 	SetBlipScale(scooterblip, 0.7)
@@ -109,11 +109,11 @@ RegisterNetEvent('qb-scooterrentals:client:Spawn', function(model)
 			disableCombat = false,
 		}, {}, {}, {}, function() -- Done
 			ScooterRentalEmail()
-			QBCore.Functions.SpawnVehicle(model, function(veh)
-				TaskWarpPedIntoVehicle(player, veh, -1)
-				TriggerEvent('vehiclekeys:client:SetOwner', GetVehicleNumberPlateText(aircraft))
+			QBCore.Functions.SpawnVehicle(model, function(veh)                
 				SetVehicleNumberPlateText(veh, "RENTAL"..tostring(math.random(1000, 9999)))
 				exports[Config.FuelSystem]:SetFuel(veh, 100.0)
+				TaskWarpPedIntoVehicle(player, veh, -1)
+				TriggerEvent('vehiclekeys:client:SetOwner', GetVehicleNumberPlateText(veh))
 				SetVehicleEngineOn(veh, false, true)
 				SetEntityAsMissionEntity(veh, true, true)
 				SpawnScooter = true
